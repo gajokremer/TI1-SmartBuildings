@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Manager {
+public class Simulator {
 
 	private ArrayList<Building> buildings;
 
-	public Manager() {
+	public Simulator() {
 
 		buildings = new ArrayList<>();
 	}
@@ -40,8 +40,25 @@ public class Manager {
 		return b;
 	}
 
-	public void addPeople(Building b, int numPeople) {
-
+//	public void addPeople(Building b, int numPeople) {
+//
+//		
+//	}
+	
+	public void run() {
 		
+		
+	}
+	
+	public String printBuildings() {
+		
+		String line = "";
+		
+		for(int i = 0; i < buildings.size(); i ++) {
+			
+			line += buildings.get(i).getId() + ", ";
+		}
+		
+		return line;
 	}
 }
