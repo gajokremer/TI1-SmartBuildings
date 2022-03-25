@@ -1,53 +1,59 @@
 package model;
 
 import java.util.HashMap;
-import java.util.PriorityQueue;
-import java.util.Stack;
+import java.util.Queue;
 
 public class Building {
 
 	private char id;
-	private HashMap<Integer, Person> floors;
-	private PriorityQueue<Person> elevatorEntrance;
-	private Stack<Person> elevatorExit;
+	private Elevator elevator;
+	private HashMap<Integer, Queue<Person>> floors;
+	private HashMap<Integer, Person> offices;
 	
 	public Building(char id) {
 		
 		this.id = id;
-		floors = new HashMap<Integer,Person>();
-		elevatorEntrance = new PriorityQueue<>();
-		elevatorExit = new Stack<>();
+		elevator = new Elevator();
+		floors = new HashMap<>();
 	}
 
 	public char getId() {
 		return id;
 	}
 
-	public HashMap<Integer, Person> getFloors() {
+	public Elevator getElevator() {
+		return elevator;
+	}
+
+	public HashMap<Integer, Queue<Person>> getFloors() {
 		return floors;
 	}
 
-	public PriorityQueue<Person> getElevatorEntrance() {
-		return elevatorEntrance;
-	}
-
-	public Stack<Person> getElevatorExit() {
-		return elevatorExit;
+	public HashMap<Integer, Person> getOffices() {
+		return offices;
 	}
 
 	public void setId(char id) {
 		this.id = id;
 	}
 
-	public void setFloors(HashMap<Integer, Person> floors) {
+	public void setElevator(Elevator elevator) {
+		this.elevator = elevator;
+	}
+
+	public void setFloors(HashMap<Integer, Queue<Person>> floors) {
 		this.floors = floors;
 	}
 
-	public void setElevatorEntrance(PriorityQueue<Person> elevatorEntrance) {
-		this.elevatorEntrance = elevatorEntrance;
+	public void setOffices(HashMap<Integer, Person> offices) {
+		this.offices = offices;
 	}
-
-	public void setElevatorExit(Stack<Person> elevatorExit) {
-		this.elevatorExit = elevatorExit;
+	
+	@Override
+	public String toString() {
+		
+		return "\n======================" 
+				+ "\n-" + id + "\n-" + elevator + "\n-" + floors + "\n-" + offices + 
+				"\n======================";
 	}
 }

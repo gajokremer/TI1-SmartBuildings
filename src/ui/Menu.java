@@ -108,10 +108,10 @@ public class Menu {
 		int numFloors = Integer.parseInt(data[2]);
 		int numOfficesByFloor = Integer.parseInt(data[3]);
 		
-		int totalOffices = numFloors * numOfficesByFloor;
+//		int totalOffices = numFloors * numOfficesByFloor;
 		
-		Building b = simulator.createBuilding(id, totalOffices);
-		System.out.println(b.getFloors());
+		Building b = simulator.createBuilding(id, numFloors, numOfficesByFloor);
+//		System.out.println(b.getFloors());
 		
 //		manager.addPeople(b, numPeople);
 		
@@ -127,16 +127,30 @@ public class Menu {
 			
 			String[] data = line.split(" ");
 			String name = data[0];
+			int location = Integer.parseInt(data[1]);
 			int destination = Integer.parseInt(data[2]);
 			
-			Person p = new Person(name, destination);
+			Person p = new Person(name);
 			
-			int location = Integer.parseInt(data[1]);
-			b.getFloors().put(location, p);
+			System.out.println(p.getName());
 			
-			simulator.getBuildings().add(b);
+			b = simulator.locateInFloor(b, p, location);
+			
+			System.out.println(b);
 
-			System.out.println(b.getFloors());
+//			System.out.println(b.getFloors());
+
+			
+//			Person p = new Person(name, location, destination);
+			
+//			System.out.println("Location: " + location);
+			
+//			b.getElevatorEntrance().add(p);
+			
+//			simulator.getBuildings().add(b);
+
+//			System.out.println("Floors: " + b.getFloors());
+//			System.out.println("Elevator: " + b.getElevatorEntrance());
 		}
 	}
 	
@@ -168,7 +182,7 @@ public class Menu {
 			
 			if(b.getId() == id) {
 				
-				p = b.getFloors().get(key);
+//				p = b.getFloors().get(key);
 			}
 		}
 		

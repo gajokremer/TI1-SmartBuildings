@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Simulator {
 
@@ -20,22 +22,44 @@ public class Simulator {
 		this.buildings = buildings;
 	}
 
-	public Building createBuilding(char id, int totalOffices) {
+	public Building createBuilding(char id, int numFloors, int numOfficesByFloor) {
 		
 		Building b = new Building(id);
 		
-		HashMap<Integer, Person> f = new HashMap<>();
+		HashMap<Integer, Queue<Person>> floors = new HashMap<>();
+		HashMap<Integer, Person> offices = new HashMap<>();
+		
+		int totalOffices = numFloors * numOfficesByFloor;
+
+		for(int i = 1; i <= numFloors; i++) {
+			
+			Queue<Person> q = new LinkedList<>();
+			
+			floors.put(i, q);
+		}
 
 		for(int i = 1; i <= totalOffices; i++) {
 			
-			f.put(i, null);
+			offices.put(i, null);
 		}
 		
-		b.setFloors(f);
+		b.setFloors(floors);
+		b.setOffices(offices);
+		
+//		System.out.println(b);
+		
+//		b.setFloors(f);
 //		buildings.add(b);
 
 //		System.out.println("Id: " + b.getId());
 //		System.out.println("F: " + b.getFloors());
+		
+		return b;
+	}
+	
+	public Building locateInFloor(Building b, Person p, int location) {
+		
+		b.getFloors().get(location).add(p);
 		
 		return b;
 	}
