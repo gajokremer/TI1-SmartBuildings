@@ -31,7 +31,7 @@ public class Menu {
 				"Select an option:\n" + 
 						"(1) to input data\n" +
 						"(2) to run simulation\n" +
-						"(3) to find a person\n" + 
+//						"(3) to find a person\n" + 
 
 				"\n(0) to exit");
 
@@ -51,18 +51,17 @@ public class Menu {
 			case 1:
 				simulator.getBuildings().removeAll(simulator.getBuildings());
 				inputData();
-//				System.out.println("Buildings: " + manager.printBuildings());
 				mainMenu();
 				break;
 				
 			case 2:
-				simulator.run();
+				run();
 				break;
 				
-			case 3:
-				System.out.println("Person: " + finder());
-				mainMenu();
-				break;
+//			case 3:
+//				System.out.println("Person: " + finder());
+//				mainMenu();
+//				break;
 			} 
 
 		} else if (option == 0) {
@@ -79,20 +78,11 @@ public class Menu {
 		int size = sc.nextInt();
 		sc.nextLine();
 		
-//		int i = 1;
-		
 		for (int i = 1; i <= size; i++) {
 			
 			buildingData(i);
 			System.out.println("Done...");
 		}
-		
-//		while(i <= size) {
-//			
-//			buildingData(i);
-//			System.out.println("Done...");
-//			i = i+1;
-//		}
 	}
 
 	private void buildingData(int i) {
@@ -130,13 +120,16 @@ public class Menu {
 			int location = Integer.parseInt(data[1]);
 			int destination = Integer.parseInt(data[2]);
 			
-			Person p = new Person(name);
+			Person p = new Person(name, destination);
 			
 			System.out.println(p.getName());
 			
-			b = simulator.locateInFloor(b, p, location);
+			b = simulator.locateInFloors(b, p, location);
+			b = simulator.locateInElevator(b, p, destination);
 			
-			System.out.println(b);
+			simulator.getBuildings().add(b);
+			
+//			System.out.println(b);
 
 //			System.out.println(b.getFloors());
 
@@ -152,8 +145,25 @@ public class Menu {
 //			System.out.println("Floors: " + b.getFloors());
 //			System.out.println("Elevator: " + b.getElevatorEntrance());
 		}
+
+		System.out.println(b);
 	}
 	
+	private void run() {
+
+		System.out.println("\n------Run------");
+
+//		System.out.println(simulator.getBuildings());
+		
+		for(int i = 0; i < simulator.getBuildings().size(); i++) {
+			
+//			System.out.println(simulator.getBuildings().get(i));
+			
+			simulator.runSimulation(simulator.getBuildings().get(i));
+		}
+	}
+	
+	@SuppressWarnings("unused")
 	private Person finder() {
 		
 		System.out.println("\n------Finder------");

@@ -49,11 +49,21 @@ public class Building {
 		this.offices = offices;
 	}
 	
+//	@Override
+//	public String toString() {
+//
+//		return "\n======================" + 
+//				"\n-" + id + "\n-" + elevator + "\n-" + floors + "\n-" + offices + 
+//				"\n======================\n";
+//	}
+	
 	@Override
 	public String toString() {
-		
-		return "\n======================" 
-				+ "\n-" + id + "\n-" + elevator + "\n-" + floors + "\n-" + offices + 
+		return "\n======================" + 
+				"\n-Id: " + id + 
+				"\n-Elevator: " + elevator + 
+				"\n-Floors: " + floors + 
+				"\n-Offices: " + offices + 
 				"\n======================";
 	}
 }

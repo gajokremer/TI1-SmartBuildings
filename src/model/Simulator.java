@@ -57,32 +57,54 @@ public class Simulator {
 		return b;
 	}
 	
-	public Building locateInFloor(Building b, Person p, int location) {
+	public Building locateInFloors(Building b, Person p, int location) {
 		
 		b.getFloors().get(location).add(p);
 		
 		return b;
 	}
+	
+	public Building locateInElevator(Building b, Person p, int destination) {
+		
+		b.getElevator().getEntrance().offer(p);
+		
+		System.out.println("\nEntrance: " + b.getElevator().getEntrance());
 
+		return b;
+	}
+
+	public void runSimulation(Building b) {
+		
+		HashMap<Integer, Queue<Person>> f = b.getFloors();
+		HashMap<Integer, Person> o = b.getOffices();
+		
+		for(int i = 1; i <= f.size(); i++) {
+			
+			Queue<Person> people = f.get(i);
+			
+			
+			
+//			for(int j = 1; j <= f.get(i).size(); j++) {
+//				
+//				System.out.println(f.get(j));
+//			}
+		}
+	}
+	
 //	public void addPeople(Building b, int numPeople) {
 //
 //		
 //	}
 	
-	public void run() {
-		
-		
-	}
-	
-	public String printBuildings() {
-		
-		String line = "";
-		
-		for(int i = 0; i < buildings.size(); i ++) {
-			
-			line += buildings.get(i).getId() + ", ";
-		}
-		
-		return line;
-	}
+//	public String printBuildings() {
+//		
+//		String line = "";
+//		
+//		for(int i = 0; i < buildings.size(); i ++) {
+//			
+//			line += buildings.get(i).getId() + ", ";
+//		}
+//		
+//		return line;
+//	}
 }

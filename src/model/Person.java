@@ -4,7 +4,7 @@ public class Person {
 	
 	private String name;
 //	private int location;
-//	private int destination;
+	private int destination;
 	
 //	public Person(String name, int location, int destination) {
 //		this.name = name;
@@ -14,6 +14,11 @@ public class Person {
 	
 	public Person(String name) {
 		this.name = name;
+	}
+	
+	public Person(String name, int destination) {
+		this.name = name;
+		this.destination = destination;
 	}
 
 	public String getName() {
