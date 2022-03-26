@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
@@ -13,8 +14,7 @@ public class Elevator {
 	public Elevator() {
 		location = 1;
 		direction = true;
-		entrance = new PriorityQueue<>();
-//		entrance = new PriorityQueue<>(Collections.reverseOrder());
+		entrance = new PriorityQueue<>(Collections.reverseOrder());
 		exit = new Stack<>();
 	}
 	
@@ -54,6 +54,22 @@ public class Elevator {
 		
 		if(direction == true) direction = false;
 		if(direction == false) direction = true;
+	}
+	
+	public void moveUp(int buildingSize) {
+		
+		if(location <= buildingSize) {
+			
+			location = location+1;
+		}
+	}
+	
+	public void moveDown(int buildingSize) {
+		
+		if(location >= 1) {
+			
+			location = location-1;
+		}
 	}
 	
 //	@Override

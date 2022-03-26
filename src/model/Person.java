@@ -1,6 +1,6 @@
 package model;
 
-public class Person {
+public class Person implements Comparable<Person> {
 	
 	private String name;
 //	private int location;
@@ -25,12 +25,35 @@ public class Person {
 		return name;
 	}
 
+	public int getDestination() {
+		return destination;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public void setDestination(int destination) {
+		this.destination = destination;
+	}
+
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(Person p) {
+		
+		if(destination < p.getDestination()) {
+			
+			return -1;
+			
+		} else if(p.getDestination() > destination) {
+			
+			return 1;
+		}
+		
+		return 0;
 	}
 }

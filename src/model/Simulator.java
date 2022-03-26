@@ -3,7 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Simulator {
 
@@ -64,31 +66,27 @@ public class Simulator {
 		return b;
 	}
 	
-	public Building locateInElevator(Building b, Person p, int destination) {
+	public Building locateInEntrance(Building b, Person p, int destination) {
 		
 		b.getElevator().getEntrance().offer(p);
 		
-		System.out.println("\nEntrance: " + b.getElevator().getEntrance());
+//		System.out.println("\nEntrance: " + b.getElevator().getEntrance());
 
 		return b;
 	}
-
+	
+	public Building locateInExit(Building b){
+		
+		Stack<Person> exit = new Stack<>();
+		exit.addAll(b.getElevator().getEntrance());
+		b.getElevator().setExit(exit);
+		
+		return b;
+	}
+	
 	public void runSimulation(Building b) {
 		
-		HashMap<Integer, Queue<Person>> f = b.getFloors();
-		HashMap<Integer, Person> o = b.getOffices();
 		
-		for(int i = 1; i <= f.size(); i++) {
-			
-			Queue<Person> people = f.get(i);
-			
-			
-			
-//			for(int j = 1; j <= f.get(i).size(); j++) {
-//				
-//				System.out.println(f.get(j));
-//			}
-		}
 	}
 	
 //	public void addPeople(Building b, int numPeople) {

@@ -64,6 +64,6 @@ public class Building {
 				"\n-Elevator: " + elevator + 
 				"\n-Floors: " + floors + 
 				"\n-Offices: " + offices + 
-				"\n======================";
+				"\n======================\n";
 	}
 }

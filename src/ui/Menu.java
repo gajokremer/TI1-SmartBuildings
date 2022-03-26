@@ -56,6 +56,7 @@ public class Menu {
 				
 			case 2:
 				run();
+				mainMenu();
 				break;
 				
 //			case 3:
@@ -83,6 +84,8 @@ public class Menu {
 			buildingData(i);
 			System.out.println("Done...");
 		}
+		
+		System.out.println("\n" + simulator.getBuildings());
 	}
 
 	private void buildingData(int i) {
@@ -105,14 +108,17 @@ public class Menu {
 		
 //		manager.addPeople(b, numPeople);
 		
-		peopleData(b, numPeople);
+		b = peopleData(b, numPeople);
+		b = simulator.locateInExit(b);
+		
+		simulator.getBuildings().add(b);
 	}
 	
-	private void peopleData(Building b, int numPeople) {
+	private Building peopleData(Building b, int numPeople) {
 		
 		for(int i = 1; i <= numPeople; i++) {
 			
-			System.out.print("\nPerson " + i + ": ");
+			System.out.print("\n--Person " + i + ": ");
 			String line = sc.nextLine();
 			
 			String[] data = line.split(" ");
@@ -122,12 +128,10 @@ public class Menu {
 			
 			Person p = new Person(name, destination);
 			
-			System.out.println(p.getName());
+//			System.out.println(p.getName());
 			
 			b = simulator.locateInFloors(b, p, location);
-			b = simulator.locateInElevator(b, p, destination);
-			
-			simulator.getBuildings().add(b);
+			b = simulator.locateInEntrance(b, p, destination);
 			
 //			System.out.println(b);
 
@@ -146,7 +150,10 @@ public class Menu {
 //			System.out.println("Elevator: " + b.getElevatorEntrance());
 		}
 
-		System.out.println(b);
+//		simulator.getBuildings().add(b);
+//		System.out.println(b);
+		
+		return b;
 	}
 	
 	private void run() {
@@ -158,6 +165,9 @@ public class Menu {
 		for(int i = 0; i < simulator.getBuildings().size(); i++) {
 			
 //			System.out.println(simulator.getBuildings().get(i));
+			
+			System.out.println(i);
+			System.out.println("Size: " + simulator.getBuildings().size());
 			
 			simulator.runSimulation(simulator.getBuildings().get(i));
 		}
