@@ -59,10 +59,10 @@ public class Menu {
 				mainMenu();
 				break;
 				
-//			case 3:
-//				System.out.println("Person: " + finder());
-//				mainMenu();
-//				break;
+			case 3:
+				System.out.println("Person: " + finder());
+				mainMenu();
+				break;
 			} 
 
 		} else if (option == 0) {
@@ -116,9 +116,11 @@ public class Menu {
 	
 	private Building peopleData(Building b, int numPeople) {
 		
+		System.out.println();
+		
 		for(int i = 1; i <= numPeople; i++) {
 			
-			System.out.print("\n--Person " + i + ": ");
+			System.out.print("--Person " + i + ": ");
 			String line = sc.nextLine();
 			
 			String[] data = line.split(" ");
@@ -126,12 +128,12 @@ public class Menu {
 			int location = Integer.parseInt(data[1]);
 			int destination = Integer.parseInt(data[2]);
 			
-			Person p = new Person(name, destination);
+			Person p = new Person(name, location, destination);
 			
 //			System.out.println(p.getName());
 			
 			b = simulator.locateInFloors(b, p, location);
-			b = simulator.locateInEntrance(b, p, destination);
+			b = simulator.locateInEntrance(b, p);
 			
 //			System.out.println(b);
 
@@ -164,12 +166,12 @@ public class Menu {
 		
 		for(int i = 0; i < simulator.getBuildings().size(); i++) {
 			
-//			System.out.println(simulator.getBuildings().get(i));
+//			System.out.println(i);
+//			System.out.println("Size: " + simulator.getBuildings().size());
 			
-			System.out.println(i);
-			System.out.println("Size: " + simulator.getBuildings().size());
+			System.out.println(simulator.runSimulation(simulator.getBuildings().get(i)));
 			
-			simulator.runSimulation(simulator.getBuildings().get(i));
+//			System.out.println(simulator.getBuildings());
 		}
 	}
 	
@@ -178,19 +180,19 @@ public class Menu {
 		
 		System.out.println("\n------Finder------");
 		
-		System.out.print("\nID + Key: ");
-		String line = sc.nextLine();
-		String[] data = line.split(" ");
-		
-		char id = line.charAt(0);
-		int key = Integer.parseInt(data[1]);
-		
-//		System.out.print("\nBuilding ID: ");
+//		System.out.print("\nID + Key: ");
 //		String line = sc.nextLine();
-//		char id = line.charAt(0);
+//		String[] data = line.split(" ");
 //		
-//		System.out.print("Key: ");
-//		int key = sc.nextInt();
+//		char id = line.charAt(0);
+//		int key = Integer.parseInt(data[1]);
+		
+		System.out.print("\nBuilding ID: ");
+		String line = sc.nextLine();
+		char id = line.charAt(0);
+		
+		System.out.print("Key: ");
+		int key = sc.nextInt();
 		
 		Person p = null;
 		

@@ -66,7 +66,7 @@ public class Simulator {
 		return b;
 	}
 	
-	public Building locateInEntrance(Building b, Person p, int destination) {
+	public Building locateInEntrance(Building b, Person p) {
 		
 		b.getElevator().getEntrance().offer(p);
 		
@@ -84,9 +84,29 @@ public class Simulator {
 		return b;
 	}
 	
-	public void runSimulation(Building b) {
+	public String runSimulation(Building b) {
 		
+		String line = "";
 		
+		Stack<Person> exit = b.getElevator().getExit();
+		int size = exit.size();
+		
+		for(int i = 0; i < size; i++) {
+			
+			Person p = exit.pop();
+				
+			b.getOffices().replace(p.getDestination(), p);
+
+			b.getElevator().setExit(exit);
+			b.getElevator().setEntrance(null);
+			
+			line += "\n-" + p.getName() + " moved to office " + p.getDestination();
+		}
+		
+		line += "\n\nOffices for Buidling " + b.getId() + ": " + 
+				"\n" + b.getOffices() + "\n";
+		
+		return line;
 	}
 	
 //	public void addPeople(Building b, int numPeople) {

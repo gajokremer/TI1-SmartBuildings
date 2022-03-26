@@ -3,26 +3,21 @@ package model;
 public class Person implements Comparable<Person> {
 	
 	private String name;
-//	private int location;
+	private int location;
 	private int destination;
 	
-//	public Person(String name, int location, int destination) {
-//		this.name = name;
-//		this.location = location;
-//		this.destination = destination;
-//	}
-	
-	public Person(String name) {
+	public Person(String name, int location, int destination) {
 		this.name = name;
-	}
-	
-	public Person(String name, int destination) {
-		this.name = name;
+		this.location = location;
 		this.destination = destination;
 	}
-
+	
 	public String getName() {
 		return name;
+	}
+
+	public int getLocation() {
+		return location;
 	}
 
 	public int getDestination() {
@@ -31,6 +26,10 @@ public class Person implements Comparable<Person> {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setLocation(int location) {
+		this.location = location;
 	}
 
 	public void setDestination(int destination) {
@@ -45,11 +44,11 @@ public class Person implements Comparable<Person> {
 	@Override
 	public int compareTo(Person p) {
 		
-		if(destination < p.getDestination()) {
+		if(location < p.getLocation()) {
 			
 			return -1;
 			
-		} else if(p.getDestination() > destination) {
+		} else if(p.getLocation() > location) {
 			
 			return 1;
 		}
