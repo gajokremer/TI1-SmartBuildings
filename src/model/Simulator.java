@@ -94,13 +94,21 @@ public class Simulator {
 		for(int i = 0; i < size; i++) {
 			
 			Person p = exit.pop();
-				
-			b.getOffices().replace(p.getDestination(), p);
-
 			b.getElevator().setExit(exit);
-			b.getElevator().setEntrance(null);
 			
-			line += "\n-" + p.getName() + " moved to office " + p.getDestination();
+			if(b.getOffices().containsKey(p.getDestination())) {
+				
+				b.getOffices().replace(p.getDestination(), p);
+				
+				b.getElevator().setEntrance(null);
+				
+				line += "\n-" + p.getName() + " moved to office " + p.getDestination();
+				
+			} else {
+				
+				line += "\n-" + p.getName() + " cannot enter a non-existant office";
+			}
+				
 		}
 		
 		line += "\n\nOffices for Buidling " + b.getId() + ": " + 

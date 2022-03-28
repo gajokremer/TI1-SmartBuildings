@@ -30,8 +30,8 @@ public class Menu {
 		System.out.println(
 				"Select an option:\n" + 
 						"(1) to input data\n" +
-						"(2) to run simulation\n" +
-//						"(3) to find a person\n" + 
+//						"(2) to run simulation\n" +
+						"(3) to find a person\n" + 
 
 				"\n(0) to exit");
 
@@ -51,13 +51,14 @@ public class Menu {
 			case 1:
 				simulator.getBuildings().removeAll(simulator.getBuildings());
 				inputData();
-				mainMenu();
-				break;
-				
-			case 2:
 				run();
 				mainMenu();
 				break;
+				
+//			case 2:
+//				run();
+//				mainMenu();
+//				break;
 				
 			case 3:
 				System.out.println("Person: " + finder());

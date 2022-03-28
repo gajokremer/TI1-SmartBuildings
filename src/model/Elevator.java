@@ -15,6 +15,7 @@ public class Elevator {
 		location = 1;
 		direction = true;
 		entrance = new PriorityQueue<>(Collections.reverseOrder());
+//		entrance = new PriorityQueue<>();
 		exit = new Stack<>();
 	}
 	
@@ -79,9 +80,10 @@ public class Elevator {
 
 	@Override
 	public String toString() {
-		return "\n--Location: " + location +
-				"\n--Direction: " + direction + 
-				"\n--Entrance: " + entrance + 
-				"\n--Exit: " + exit;
+		return 
+//				"\n--Location: " + location +
+//				"\n--Direction: " + direction + 
+				"\n--Entrance: " + entrance + " Head: "  + entrance.peek()+ 
+				"\n--Exit: " + exit + " Head: " + exit.peek();
 	}
 }
