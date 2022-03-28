@@ -2,24 +2,24 @@ package model;
 
 public class MyHashMap<K, V> {
 	
-	private HashMapNode<K, V> first;
+	private HMNode<K, V> first;
 	
 	public MyHashMap() {
 		
 		first = null;
 	}
 
-	public HashMapNode<K, V> getFirst() {
+	public HMNode<K, V> getFirst() {
 		return first;
 	}
 
-	public void setFirst(HashMapNode<K, V> first) {
+	public void setFirst(HMNode<K, V> first) {
 		this.first = first;
 	}
 	
 	public void put(K key, V value) {
 
-		HashMapNode<K, V> newNode = new HashMapNode<K, V>(key, value);
+		HMNode<K, V> newNode = new HMNode<K, V>(key, value);
 		
 //		System.out.println("\nNew Node: " + newNode);
 		
@@ -37,7 +37,7 @@ public class MyHashMap<K, V> {
 		}
 	}
 	
-	private void assignPosition(HashMapNode<K, V> newNode, HashMapNode<K, V> current) {
+	private void assignPosition(HMNode<K, V> newNode, HMNode<K, V> current) {
 		
 //		System.out.println("Assign position");
 
@@ -69,7 +69,7 @@ public class MyHashMap<K, V> {
 		}
 	}
 	
-	private V findValueByKey(K key, HashMapNode<K, V> current) {
+	private V findValueByKey(K key, HMNode<K, V> current) {
 
 		if(current.getKey() == key) {
 			
@@ -81,10 +81,39 @@ public class MyHashMap<K, V> {
 		}
 	}
 	
+	public boolean containsKey(K key) {
+
+		if(first.getKey().equals(key)) {
+
+			return true;
+
+		} else {
+
+			return findIfKeyExists(key, first.getNext());
+		}
+	}
+
+	private boolean findIfKeyExists(K key, HMNode<K, V> current) {
+
+		if(current != null) {
+
+			if(current.getKey().equals(key)) {
+
+				return true;
+
+			} else {
+
+				return findIfKeyExists(key, current.getNext());
+			}
+		}
+
+		return false;
+	}
+	
 	public boolean containsValue(V value) {
 		
-		System.out.println("First: " + first.getValue());
-		System.out.println("Value: " + value);
+//		System.out.println("First: " + first.getValue());
+//		System.out.println("Value: " + value);
 		
 		if(first.getValue().equals(value)) {
 			
@@ -96,10 +125,10 @@ public class MyHashMap<K, V> {
 		}
 	}
 	
-	private boolean findIfValueExists(V value, HashMapNode<K, V> current) {
-		
+	private boolean findIfValueExists(V value, HMNode<K, V> current) {
+
 		if(current != null) {
-			
+
 			if(current.getValue().equals(value)) {
 
 				return true;
@@ -108,10 +137,32 @@ public class MyHashMap<K, V> {
 
 				return findIfValueExists(value, current.getNext());
 			}
+		}
+
+		return false;
+	}
+
+	public void replace(K key, V value) {
+		
+		if(first.getKey().equals(key)) {
+			
+			first.setValue(value);
 			
 		} else {
 			
-			return false;
+			findKeyOfValue(key, value, first.getNext());
+		}
+    }
+
+	private void findKeyOfValue(K key, V value, HMNode<K, V> current) {
+		
+		if(current.getKey().equals(key)) {
+			
+			current.setValue(value);
+			
+		} else {
+			
+			findKeyOfValue(key, value, current.getNext());
 		}
 	}
 
@@ -123,7 +174,7 @@ public class MyHashMap<K, V> {
 		return count;
 	}
 	
-	private int count(HashMapNode<K, V> current, int count) {
+	private int count(HMNode<K, V> current, int count) {
 
 		if(current != null) {
 			
@@ -138,7 +189,7 @@ public class MyHashMap<K, V> {
 		
 		String line = "{";
 		
-		HashMapNode<K, V> current = first;
+		HMNode<K, V> current = first;
 		
 		while(current != null) {
 			

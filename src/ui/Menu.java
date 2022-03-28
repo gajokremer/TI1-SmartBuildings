@@ -80,9 +80,9 @@ public class Menu {
 		int size = sc.nextInt();
 		sc.nextLine();
 		
-		for (int i = 1; i <= size; i++) {
+		for (int i = 0; i < size; i++) {
 			
-			buildingData(i);
+			buildingData(i+1);
 			System.out.println("Done...");
 		}
 		
@@ -119,9 +119,9 @@ public class Menu {
 		
 		System.out.println();
 		
-		for(int i = 1; i <= numPeople; i++) {
+		for(int i = 0; i < numPeople; i++) {
 			
-			System.out.print("--Person " + i + ": ");
+			System.out.print("--Person " + (i + 1) + ": ");
 			String line = sc.nextLine();
 			
 			String[] data = line.split(" ");
@@ -176,7 +176,6 @@ public class Menu {
 		}
 	}
 	
-	@SuppressWarnings("unused")
 	private Person finder() {
 		
 		System.out.println("\n------Finder------");

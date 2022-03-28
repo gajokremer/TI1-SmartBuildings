@@ -1,21 +1,21 @@
 package model;
 
-public class HashMapNode <K, V> {
+public class HMNode <K, V> {
 
 	private K key;
 	private V value;
-	private HashMapNode<K, V> next;
-	private HashMapNode<K, V> prev;
+	private HMNode<K, V> next;
+	private HMNode<K, V> prev;
 	
-	public HashMapNode(K key, V value, HashMapNode<K, V> next, HashMapNode<K, V> prev) {
-		super();
-		this.key = key;
-		this.value = value;
-		this.next = next;
-		this.prev = prev;
-	}
+//	public HMNode(K key, V value, HMNode<K, V> next, HMNode<K, V> prev) {
+//		super();
+//		this.key = key;
+//		this.value = value;
+//		this.next = next;
+//		this.prev = prev;
+//	}
 	
-	public HashMapNode(K key, V value) {
+	public HMNode(K key, V value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -28,11 +28,11 @@ public class HashMapNode <K, V> {
 		return value;
 	}
 
-	public HashMapNode<K, V> getNext() {
+	public HMNode<K, V> getNext() {
 		return next;
 	}
 
-	public HashMapNode<K, V> getPrev() {
+	public HMNode<K, V> getPrev() {
 		return prev;
 	}
 
@@ -44,11 +44,11 @@ public class HashMapNode <K, V> {
 		this.value = value;
 	}
 
-	public void setNext(HashMapNode<K, V> next) {
+	public void setNext(HMNode<K, V> next) {
 		this.next = next;
 	}
 
-	public void setPrev(HashMapNode<K, V> prev) {
+	public void setPrev(HMNode<K, V> prev) {
 		this.prev = prev;
 	}
 	

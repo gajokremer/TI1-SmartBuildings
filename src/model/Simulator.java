@@ -1,9 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -28,8 +26,8 @@ public class Simulator {
 		
 		Building b = new Building(id);
 		
-		HashMap<Integer, Queue<Person>> floors = new HashMap<>();
-		HashMap<Integer, Person> offices = new HashMap<>();
+		MyHashMap<Integer, Queue<Person>> floors = new MyHashMap<>();
+		MyHashMap<Integer, Person> offices = new MyHashMap<>();
 		
 		int totalOffices = numFloors * numOfficesByFloor;
 
@@ -100,6 +98,12 @@ public class Simulator {
 				
 				b.getOffices().replace(p.getDestination(), p);
 				
+				System.out.println(b.getOffices().containsKey(p.getDestination()));
+				System.out.println(b.getOffices().get(p.getDestination()));
+				
+				System.out.println("Destination: " + p.getDestination());
+				System.out.println("Offices: " + b.getOffices());
+				
 				b.getElevator().setEntrance(null);
 				
 				line += "\n-" + p.getName() + " moved to office " + p.getDestination();
@@ -111,7 +115,7 @@ public class Simulator {
 				
 		}
 		
-		line += "\n\nOffices for Buidling " + b.getId() + ": " + 
+		line += "\n\nOffices for Building " + b.getId() + ": " + 
 				"\n" + b.getOffices() + "\n";
 		
 		return line;

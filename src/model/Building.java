@@ -1,20 +1,19 @@
 package model;
 
-import java.util.HashMap;
 import java.util.Queue;
 
 public class Building {
 
 	private char id;
 	private Elevator elevator;
-	private HashMap<Integer, Queue<Person>> floors;
-	private HashMap<Integer, Person> offices;
+	private MyHashMap<Integer, Queue<Person>> floors;
+	private MyHashMap<Integer, Person> offices;
 	
 	public Building(char id) {
 		
 		this.id = id;
 		elevator = new Elevator();
-		floors = new HashMap<>();
+		floors = new MyHashMap<>();
 	}
 
 	public char getId() {
@@ -25,11 +24,11 @@ public class Building {
 		return elevator;
 	}
 
-	public HashMap<Integer, Queue<Person>> getFloors() {
+	public MyHashMap<Integer, Queue<Person>> getFloors() {
 		return floors;
 	}
 
-	public HashMap<Integer, Person> getOffices() {
+	public MyHashMap<Integer, Person> getOffices() {
 		return offices;
 	}
 
@@ -41,11 +40,11 @@ public class Building {
 		this.elevator = elevator;
 	}
 
-	public void setFloors(HashMap<Integer, Queue<Person>> floors) {
+	public void setFloors(MyHashMap<Integer, Queue<Person>> floors) {
 		this.floors = floors;
 	}
 
-	public void setOffices(HashMap<Integer, Person> offices) {
+	public void setOffices(MyHashMap<Integer, Person> offices) {
 		this.offices = offices;
 	}
 	
