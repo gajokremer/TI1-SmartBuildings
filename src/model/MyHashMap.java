@@ -23,7 +23,7 @@ public class MyHashMap<K, V> {
 		
 //		System.out.println("\nNew Node: " + newNode);
 		
-		if(first.equals(null)) {
+		if(first == null) {
 			
 //			System.out.println("first = null");
 			
@@ -41,7 +41,7 @@ public class MyHashMap<K, V> {
 		
 //		System.out.println("Assign position");
 
-		if(current.getNext().equals(null)) {
+		if(current.getNext() == null) {
 			
 //			System.out.println("next = null");
 			
@@ -95,7 +95,7 @@ public class MyHashMap<K, V> {
 
 	private boolean findIfKeyExists(K key, HMNode<K, V> current) {
 
-		if(!current.equals(null)) {
+		if(current != null) {
 
 			if(current.getKey().equals(key)) {
 
@@ -191,11 +191,11 @@ public class MyHashMap<K, V> {
 		
 		HMNode<K, V> current = first;
 		
-		while(!current.equals(null)) {
+		while(current != null) {
 			
 			line += current.toString();
 			
-			if(!current.getNext().equals(null)) {
+			if(current.getNext() != null) {
 				
 				 line += ", ";
 			}

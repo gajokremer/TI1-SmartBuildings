@@ -35,4 +35,9 @@ public class ALNode<T> {
 	public void setPrev(ALNode<T> prev) {
 		this.prev = prev;
 	}
+	
+	@Override
+	public String toString() {
+		return t.toString();
+	}
 }
