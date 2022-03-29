@@ -1,24 +1,23 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
 public class Simulator {
 
-	private ArrayList<Building> buildings;
+	private MyArrayList<Building> buildings;
 
 	public Simulator() {
 
-		buildings = new ArrayList<>();
+		buildings = new MyArrayList<>();
 	}
 
-	public ArrayList<Building> getBuildings() {
+	public MyArrayList<Building> getBuildings() {
 		return buildings;
 	}
 
-	public void setBuildings(ArrayList<Building> buildings) {
+	public void setBuildings(MyArrayList<Building> buildings) {
 		this.buildings = buildings;
 	}
 
@@ -98,11 +97,11 @@ public class Simulator {
 				
 				b.getOffices().replace(p.getDestination(), p);
 				
-				System.out.println(b.getOffices().containsKey(p.getDestination()));
-				System.out.println(b.getOffices().get(p.getDestination()));
-				
-				System.out.println("Destination: " + p.getDestination());
-				System.out.println("Offices: " + b.getOffices());
+//				System.out.println(b.getOffices().containsKey(p.getDestination()));
+//				System.out.println(b.getOffices().get(p.getDestination()));
+//				
+//				System.out.println("Destination: " + p.getDestination());
+//				System.out.println("Offices: " + b.getOffices());
 				
 				b.getElevator().setEntrance(null);
 				

@@ -23,7 +23,7 @@ public class MyHashMap<K, V> {
 		
 //		System.out.println("\nNew Node: " + newNode);
 		
-		if(first == null) {
+		if(first.equals(null)) {
 			
 //			System.out.println("first = null");
 			
@@ -41,7 +41,7 @@ public class MyHashMap<K, V> {
 		
 //		System.out.println("Assign position");
 
-		if(current.getNext() == null) {
+		if(current.getNext().equals(null)) {
 			
 //			System.out.println("next = null");
 			
@@ -59,7 +59,7 @@ public class MyHashMap<K, V> {
 	
 	public V get(K key) {
 		
-		if(first.getKey() == key) {
+		if(first.getKey().equals(key)) {
 			
 			return first.getValue();
 			
@@ -71,7 +71,7 @@ public class MyHashMap<K, V> {
 	
 	private V findValueByKey(K key, HMNode<K, V> current) {
 
-		if(current.getKey() == key) {
+		if(current.getKey().equals( key)) {
 			
 			return current.getValue();
 			
@@ -95,7 +95,7 @@ public class MyHashMap<K, V> {
 
 	private boolean findIfKeyExists(K key, HMNode<K, V> current) {
 
-		if(current != null) {
+		if(!current.equals(null)) {
 
 			if(current.getKey().equals(key)) {
 
@@ -115,7 +115,7 @@ public class MyHashMap<K, V> {
 //		System.out.println("First: " + first.getValue());
 //		System.out.println("Value: " + value);
 		
-		if(first.getValue().equals(value)) {
+		if(first.getValue().equals( value)) {
 			
 			return true;
 			
@@ -127,9 +127,9 @@ public class MyHashMap<K, V> {
 	
 	private boolean findIfValueExists(V value, HMNode<K, V> current) {
 
-		if(current != null) {
+		if(!current.equals(null)) {
 
-			if(current.getValue().equals(value)) {
+			if(current.getValue().equals( value)) {
 
 				return true;
 
@@ -176,7 +176,7 @@ public class MyHashMap<K, V> {
 	
 	private int count(HMNode<K, V> current, int count) {
 
-		if(current != null) {
+		if(!current.equals(null)) {
 			
 			return count(current.getNext(), count+1);
 		} 
@@ -191,11 +191,11 @@ public class MyHashMap<K, V> {
 		
 		HMNode<K, V> current = first;
 		
-		while(current != null) {
+		while(!current.equals(null)) {
 			
 			line += current.toString();
 			
-			if(current.getNext() != null) {
+			if(!current.getNext().equals(null)) {
 				
 				 line += ", ";
 			}

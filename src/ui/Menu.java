@@ -24,7 +24,7 @@ public class Menu {
 //		inputData();
 		
 		int option = 0;
-
+		
 		System.out.println("\n\n========MAIN MENU========\n");
 
 		System.out.println(
@@ -49,7 +49,8 @@ public class Menu {
 				break;
 
 			case 1:
-				simulator.getBuildings().removeAll(simulator.getBuildings());
+//				simulator.getBuildings().removeAll(simulator.getBuildings());
+				simulator.getBuildings().removeAll();
 				inputData();
 				run();
 				mainMenu();

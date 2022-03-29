@@ -52,14 +52,14 @@ public class HMNode <K, V> {
 		this.prev = prev;
 	}
 	
+	public String nextAndPrev() {
+		
+		return "Next=" + next + ", Prev=" + prev;
+	}
+	
 	@Override
 	public String toString() {
 		
 		return key + "=" + value;
-	}
-	
-	public String nextAndPrev() {
-
-		return "Next=" + next + ", Prev=" + prev;
 	}
 }
