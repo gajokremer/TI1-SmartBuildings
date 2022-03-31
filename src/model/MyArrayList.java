@@ -8,17 +8,17 @@ public class MyArrayList<T> {
 		first = null;
 	}
 	
-	public void add(T t) {
+	public boolean add(T t) {
 		
 		if(first == null) {
 		 
 			first = new ALNode<T>(t);
 			
-			System.out.println("First: " + first);
+			return true;
 			
 		} else {
 			
-			first.setNext(addValue(t, first.getNext(), first));
+			return addValue(t, first);
 		}
 		
 //		if(first.getT().equals(null) {
@@ -31,38 +31,32 @@ public class MyArrayList<T> {
 //		}
 	}
 
-	private ALNode<T> addValue(T t, ALNode<T> current, ALNode<T> prev) {
-
-		System.out.println("Current 1: " + current);
+	private boolean addValue(T t, ALNode<T> current) {
 		
-		if(current == null) {
-
-			current = new ALNode<T>(t);
-			current.setPrev(prev);
-			prev.setNext(current);
+		if(current.getNext() == null) {
 			
-			System.out.println("Current 2: " + current);
+			ALNode<T> node = new ALNode<T>(t);
+			current.setNext(node);
+			current.getNext().setPrev(current);
 			
-			return current;
-
+			return true;
+			
 		} else {
-
-			current.setNext(addValue(t, current.getNext(), current));
-			return current;
-		} 
+			
+			return addValue(t, current);
+		}
 		
 //		if(current != null) {
-//
+//			
 //			if(current.getT() != null) {
-//
+//				
 //				current.setT(t);
-//
+//				
 //			} else {
-//
+//				
 //				addValue(t, current.getNext());
 //			}
 //		}
-		
 	}
 
 	public void removeAll() {
@@ -169,6 +163,8 @@ public class MyArrayList<T> {
 //		System.out.println("First: " + first);
 		
 		if(first != null) {
+			
+			System.out.println("while");
 
 			line += first;
 			ALNode<T> current = first.getNext();
@@ -176,14 +172,13 @@ public class MyArrayList<T> {
 
 			while(canContinue) {
 
-//				System.out.println("Current: " + current);
-				System.out.println("while");
+				System.out.println("Current: " + current);
 
 				if(current != null) {
 
 					if(current.getNext() != null) {
 
-						line += current + ", ";
+						line += current;
 						
 					} else {
 						

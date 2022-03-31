@@ -1,6 +1,10 @@
-package model;
+package ui;
 
 import java.util.Scanner;
+
+import model.Building;
+import model.Simulator;
+import model.Person;
 
 public class Menu {
 
@@ -158,7 +162,7 @@ public class Menu {
 	
 	private void run() {
 
-		System.out.println("\n------Simulation------");
+		System.out.println("\n------Run------");
 
 //		System.out.println(simulator.getBuildings());
 		
