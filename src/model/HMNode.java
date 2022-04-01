@@ -1,12 +1,12 @@
 package model;
 
-public class HMNode <K, V> {
+public class HMNode<K, V> {
 
 	private K key;
 	private V value;
 	private HMNode<K, V> next;
 	private HMNode<K, V> prev;
-	
+
 //	public HMNode(K key, V value, HMNode<K, V> next, HMNode<K, V> prev) {
 //		super();
 //		this.key = key;
@@ -14,7 +14,7 @@ public class HMNode <K, V> {
 //		this.next = next;
 //		this.prev = prev;
 //	}
-	
+
 	public HMNode(K key, V value) {
 		this.key = key;
 		this.value = value;
@@ -51,15 +51,15 @@ public class HMNode <K, V> {
 	public void setPrev(HMNode<K, V> prev) {
 		this.prev = prev;
 	}
-	
+
 	public String nextAndPrev() {
-		
+
 		return "Next=" + next + ", Prev=" + prev;
 	}
-	
+
 	@Override
 	public String toString() {
-		
+
 		return key + "=" + value;
 	}
 }

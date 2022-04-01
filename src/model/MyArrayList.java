@@ -8,17 +8,17 @@ public class MyArrayList<T> {
 		first = null;
 	}
 	
-	public boolean add(T t) {
+	public void add(T t) {
 		
 		if(first == null) {
 		 
 			first = new ALNode<T>(t);
 			
-			return true;
+//			return true;
 			
 		} else {
 			
-			return addValue(t, first);
+			first = addValue(t, first);
 		}
 		
 //		if(first.getT().equals(null) {
@@ -31,15 +31,17 @@ public class MyArrayList<T> {
 //		}
 	}
 
-	private boolean addValue(T t, ALNode<T> current) {
+	private ALNode<T> addValue(T t, ALNode<T> current) {
 		
 		if(current.getNext() == null) {
 			
 			ALNode<T> node = new ALNode<T>(t);
+//			System.out.println("1 Current next: " + current.getNext());
 			current.setNext(node);
+//			System.out.println("2 Current next: " + current.getNext());
 			current.getNext().setPrev(current);
 			
-			return true;
+			return current;
 			
 		} else {
 			
@@ -64,7 +66,7 @@ public class MyArrayList<T> {
 //		if(!first.equals(null)) {
 		if(first != null) {
 
-			if(first.getNext().equals(null)) {
+			if(first.getNext() == null) {
 
 				first = null;
 
@@ -81,7 +83,7 @@ public class MyArrayList<T> {
 	
 	private void removeNode(ALNode<T> current, ALNode<T> aux) {
 		
-		if(!current.getNext().equals(null)) {
+		if(current.getNext() != null) {
 			
 			aux = null;
 			removeNode(current.getNext(), current);
@@ -94,9 +96,13 @@ public class MyArrayList<T> {
 			
 			return 0;
 			
+		} else if(!first.equals(null) && first.getNext().equals(null)) {
+		
+			return 1;
+			
 		} else {
 			
-			int i = 1;
+			int i = 2;
 			
 			return count(first.getNext(), i);
 		}
@@ -164,29 +170,49 @@ public class MyArrayList<T> {
 		
 		if(first != null) {
 			
-			System.out.println("while");
+//			System.out.println("while");
 
 			line += first;
 			ALNode<T> current = first.getNext();
 			boolean canContinue = true;
 
+//			System.out.println("First: " + first);
+//			System.out.println("Second: " + first.getNext());
+			
 			while(canContinue) {
+				
+//				System.out.println("while");
+//				System.out.println("Can continue?: " + canContinue);
 
-				System.out.println("Current: " + current);
+//				System.out.println("Current: " + current);
 
+//				if(current != null) {
+//
+//					if(current.getNext() != null) {
+//
+//						line += current;
+//						
+//					} else {
+//						
+//						canContinue = false;
+//					}
+//					
+//				} else {
+//
+//					canContinue = false;
+//				}
+//				
+//				current = current.getNext();
+				
+//				System.out.println(current);
+				
 				if(current != null) {
-
-					if(current.getNext() != null) {
-
-						line += current;
-						
-					} else {
-						
-						canContinue = false;
-					}
+					
+					line += current;
+					current = current.getNext();
 					
 				} else {
-
+					
 					canContinue = false;
 				}
 			}

@@ -87,7 +87,7 @@ public class Menu {
 			System.out.println("Done...");
 		}
 		
-		System.out.println("\n" + simulator.getBuildings());
+		System.out.println("\nBUILDINGS: " + simulator.getBuildings());
 	}
 
 	private void buildingData(int i) {
@@ -165,6 +165,8 @@ public class Menu {
 		System.out.println("\n------Run------");
 
 //		System.out.println(simulator.getBuildings());
+		
+		System.out.println("Size: " + simulator.getBuildings().size());
 		
 		for(int i = 0; i < simulator.getBuildings().size(); i++) {
 			
