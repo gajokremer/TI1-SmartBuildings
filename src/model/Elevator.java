@@ -1,20 +1,17 @@
 package model;
 
-import java.util.Collections;
-import java.util.PriorityQueue;
-
 public class Elevator {
 
 //	private int location;
 //	private boolean direction;
-	private PriorityQueue<Person> entrance;
+	private MyPriorityQueue<Person> entrance;
 	private MyStack<Person> exit;
 	
 	public Elevator() {
 //		location = 1;
 //		direction = true;
-		entrance = new PriorityQueue<>(Collections.reverseOrder());
-//		entrance = new PriorityQueue<>();
+//		entrance = new MyPriorityQueue<>(Collections.reverseOrder());
+		entrance = new MyPriorityQueue<>();
 		exit = new MyStack<>();
 	}
 	
@@ -26,7 +23,7 @@ public class Elevator {
 //		return direction;
 //	}
 
-	public PriorityQueue<Person> getEntrance() {
+	public MyPriorityQueue<Person> getEntrance() {
 		return entrance;
 	}
 
@@ -42,7 +39,7 @@ public class Elevator {
 //		this.direction = direction;
 //	}
 
-	public void setEntrance(PriorityQueue<Person> entrance) {
+	public void setEntrance(MyPriorityQueue<Person> entrance) {
 		this.entrance = entrance;
 	}
 
@@ -82,7 +79,8 @@ public class Elevator {
 		return 
 //				"\n--Location: " + location +
 //				"\n--Direction: " + direction + 
-				"\n--Entrance: " + entrance + " Head: "  + entrance.peek()+ 
-				"\n--Exit: " + exit + " Head: " + exit.peek();
+				"\n--Entrance: " + entrance + " Head: "  + entrance.peek().toString();
+//				+ 
+//				"\n--Exit: " + exit + " Head: " + exit.peek().toString();
 	}
 }

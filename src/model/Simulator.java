@@ -1,7 +1,6 @@
 package model;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Simulator {
@@ -76,7 +75,7 @@ public class Simulator {
 		
 		
 		MyStack<Person> exit = new MyStack<>();
-		PriorityQueue<Person> entranceCopy = b.getElevator().getEntrance();
+		MyPriorityQueue<Person> entranceCopy = b.getElevator().getEntrance();
 		
 		int entranceSize = b.getElevator().getEntrance().size();
 		

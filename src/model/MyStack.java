@@ -1,7 +1,5 @@
 package model;
 
-import java.util.PriorityQueue;
-
 public class MyStack<S> {
 
 	private SNode<S> head;
@@ -18,9 +16,11 @@ public class MyStack<S> {
 		this.head = head;
 	}
 
-	public String peek() {
+	public SNode<S> peek() {
 		
-		return head.getS().toString();
+		if(head != null) return head;
+		
+		else return null;
 	}
 	
 	public S pop() {
@@ -62,7 +62,7 @@ public class MyStack<S> {
 
 	public int size() {
 
-		if(head.equals(null)) {
+		if(head == null) {
 
 			return 0;
 
