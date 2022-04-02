@@ -2,21 +2,20 @@ package model;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.Stack;
 
 public class Elevator {
 
 //	private int location;
 //	private boolean direction;
 	private PriorityQueue<Person> entrance;
-	private Stack<Person> exit;
+	private MyStack<Person> exit;
 	
 	public Elevator() {
 //		location = 1;
 //		direction = true;
 		entrance = new PriorityQueue<>(Collections.reverseOrder());
 //		entrance = new PriorityQueue<>();
-		exit = new Stack<>();
+		exit = new MyStack<>();
 	}
 	
 //	public int getLocation() {
@@ -31,7 +30,7 @@ public class Elevator {
 		return entrance;
 	}
 
-	public Stack<Person> getExit() {
+	public MyStack<Person> getExit() {
 		return exit;
 	}
 
@@ -47,7 +46,7 @@ public class Elevator {
 		this.entrance = entrance;
 	}
 
-	public void setExit(Stack<Person> exit) {
+	public void setExit(MyStack<Person> exit) {
 		this.exit = exit;
 	}
 	

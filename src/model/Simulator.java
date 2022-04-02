@@ -1,8 +1,8 @@
 package model;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.Stack;
 
 public class Simulator {
 
@@ -74,8 +74,18 @@ public class Simulator {
 	
 	public Building locateInExit(Building b){
 		
-		Stack<Person> exit = new Stack<>();
-		exit.addAll(b.getElevator().getEntrance());
+		
+		MyStack<Person> exit = new MyStack<>();
+		PriorityQueue<Person> entranceCopy = b.getElevator().getEntrance();
+		
+		int entranceSize = b.getElevator().getEntrance().size();
+		
+		for(int i = 0; i < entranceSize; i++) {
+			
+			exit.push(entranceCopy.poll());
+		}
+		
+//		exit.addAll(b.getElevator().getEntrance());
 		b.getElevator().setExit(exit);
 		
 		return b;
@@ -85,7 +95,7 @@ public class Simulator {
 		
 		String line = "";
 		
-		Stack<Person> exit = b.getElevator().getExit();
+		MyStack<Person> exit = b.getElevator().getExit();
 		int size = exit.size();
 		
 		for(int i = 0; i < size; i++) {

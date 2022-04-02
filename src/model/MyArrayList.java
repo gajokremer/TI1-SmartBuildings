@@ -96,7 +96,7 @@ public class MyArrayList<T> {
 			
 			return 0;
 			
-		} else if(!first.equals(null) && first.getNext().equals(null)) {
+		} else if(first != null && first.getNext() == null) {
 		
 			return 1;
 			
@@ -181,34 +181,9 @@ public class MyArrayList<T> {
 			
 			while(canContinue) {
 				
-//				System.out.println("while");
-//				System.out.println("Can continue?: " + canContinue);
-
-//				System.out.println("Current: " + current);
-
-//				if(current != null) {
-//
-//					if(current.getNext() != null) {
-//
-//						line += current;
-//						
-//					} else {
-//						
-//						canContinue = false;
-//					}
-//					
-//				} else {
-//
-//					canContinue = false;
-//				}
-//				
-//				current = current.getNext();
-				
-//				System.out.println(current);
-				
 				if(current != null) {
-					
-					line += current;
+
+					line += ", " + current;
 					current = current.getNext();
 					
 				} else {

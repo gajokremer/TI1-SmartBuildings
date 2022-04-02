@@ -166,7 +166,7 @@ public class Menu {
 
 //		System.out.println(simulator.getBuildings());
 		
-		System.out.println("Size: " + simulator.getBuildings().size());
+		System.out.println("\nTotal Buildings: " + simulator.getBuildings().size());
 		
 		for(int i = 0; i < simulator.getBuildings().size(); i++) {
 			
