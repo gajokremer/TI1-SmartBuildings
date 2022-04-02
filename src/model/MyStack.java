@@ -24,8 +24,8 @@ public class MyStack<S> {
 	}
 	
 	public S pop() {
-
-		if(!head.equals(null)) {
+		
+		if(head != null) {
 			
 			SNode<S> aux = head;
 			head = head.getNext();
@@ -47,8 +47,8 @@ public class MyStack<S> {
 			SNode<S> aux = head;
 			SNode<S> newNode = new SNode<S>(s);
 			head = newNode;
-			aux.setPrev(head);
 			head.setNext(aux);
+			aux.setPrev(head);
 		}
 	}
 
@@ -103,7 +103,7 @@ public class MyStack<S> {
 		
 		if(head != null) {
 
-			line += head;
+			line += head.toString();
 			SNode<S> current = head.getNext();
 			boolean canContinue = true;
 

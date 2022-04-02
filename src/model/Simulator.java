@@ -79,12 +79,15 @@ public class Simulator {
 		
 		int entranceSize = b.getElevator().getEntrance().size();
 		
+		System.out.println("Entrance size: " + entranceSize);
+		
 		for(int i = 0; i < entranceSize; i++) {
 			
 			exit.push(entranceCopy.poll());
 		}
 		
 //		exit.addAll(b.getElevator().getEntrance());
+		System.out.println("Exit: " + exit);	
 		b.getElevator().setExit(exit);
 		
 		return b;
@@ -101,6 +104,10 @@ public class Simulator {
 			
 			Person p = exit.pop();
 			b.getElevator().setExit(exit);
+			
+			System.out.println("Offices bulding: " + b.getId() + ": " + b.getOffices());
+			System.out.println("P: " + p);
+			System.out.println("Destination: " + p.getDestination());
 			
 			if(b.getOffices().containsKey(p.getDestination())) {
 				

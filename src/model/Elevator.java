@@ -79,8 +79,7 @@ public class Elevator {
 		return 
 //				"\n--Location: " + location +
 //				"\n--Direction: " + direction + 
-				"\n--Entrance: " + entrance + " Head: "  + entrance.peek().toString();
-//				+ 
-//				"\n--Exit: " + exit + " Head: " + exit.peek().toString();
+				"\n--Entrance: " + entrance + " Head: "  + entrance.peek().toString() +
+				"\n--Exit: " + exit + " Head: " + exit.peek().toString();
 	}
 }

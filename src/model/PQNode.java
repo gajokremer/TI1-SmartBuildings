@@ -51,13 +51,13 @@ public class PQNode<P> {
 		return p.toString();
 	}
 	
-	public String nodeForm() {
+	public String nodeFormat() {
 		
 		String line = "";
 		
 		if(parent != null) {
 			
-			line += parent.nodeForm() + " => ";
+			line += parent.nodeFormat() + " => ";
 		}
 		
 		line += "[" + left + " <- "+ p.toString() + " -> " + right + "]";
