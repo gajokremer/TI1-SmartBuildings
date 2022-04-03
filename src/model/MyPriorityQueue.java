@@ -37,15 +37,6 @@ public class MyPriorityQueue<P extends Person> {
 			
 			offer(root, newNode);
 		}
-		
-//		else if(p.getLocation() < head.getP().getLocation()) {
-//			
-//			offer(head.getLeft(), newNode);
-//			
-//		} else {
-//			
-//			newNode = offer(head.getRight(), newNode);
-//		}
 	}
 	
 	private PQNode<P> offer(PQNode<P> current, PQNode<P> newNode) {
@@ -131,11 +122,19 @@ public class MyPriorityQueue<P extends Person> {
 		
 		if(root != null) {
 			
-			System.out.println("Root: " + root);
+			System.out.println("Poll Root: " + root);
 			
-//			int minValue = minValue(root.getRight());
+			PQNode<P> oldRoot = root;
+			PQNode<P> minNode = null;
 			
-			PQNode<P> minNode = minValue(root.getRight());
+			if(root.getRight() != null) {
+				
+				minNode = minValueByRight(root.getRight());
+				
+			} else if(root.getLeft() != null){
+				
+				minNode = root.getLeft();
+			}
 			
 			if(minNode != null) {
 				
@@ -147,18 +146,20 @@ public class MyPriorityQueue<P extends Person> {
 				
 				root = minNode;
 			}
-		}
+
+			return oldRoot.getP();
+		} 
 		
-		return root.getP();
+		return null;
 	}
 
-	private PQNode<P> minValue(PQNode<P> current) {
+	private PQNode<P> minValueByRight(PQNode<P> current) {
 		
 		if(current != null) {
 
 			if(current.getLeft() != null) {
 
-				return minValue(current.getLeft());
+				return minValueByRight(current.getLeft());
 			}
 		}
 		
