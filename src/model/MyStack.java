@@ -52,14 +52,6 @@ public class MyStack<S> {
 		}
 	}
 
-//	public void addAll(PriorityQueue<S> entrance) {
-//		
-////		while() {
-////			
-////			
-////		}
-//	}
-
 	public int size() {
 
 		if(head == null) {

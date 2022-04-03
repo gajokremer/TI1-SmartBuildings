@@ -54,7 +54,7 @@ public class MyPriorityQueue<P extends Person> {
 
 					current.setLeft(newNode);
 					newNode.setParent(current);
-					System.out.println(newNode.getP().getName() + " in node form: " + newNode.nodeFormat());
+//					System.out.println(newNode.getP().getName() + " in node form: " + newNode.nodeFormat());
 					return newNode;
 					
 				}  else {
@@ -69,7 +69,7 @@ public class MyPriorityQueue<P extends Person> {
 
 					current.setRight(newNode);
 					newNode.setParent(current);
-					System.out.println(newNode.getP().getName() + " in node form: " + newNode.nodeFormat());
+//					System.out.println(newNode.getP().getName() + " in node form: " + newNode.nodeFormat());
 					return newNode;
 
 				} else {
@@ -122,7 +122,7 @@ public class MyPriorityQueue<P extends Person> {
 		
 		if(root != null) {
 			
-			System.out.println("Poll Root: " + root);
+//			System.out.println("Poll Root: " + root);
 			
 			PQNode<P> oldRoot = root;
 			PQNode<P> minNode = null;
@@ -138,7 +138,7 @@ public class MyPriorityQueue<P extends Person> {
 			
 			if(minNode != null) {
 				
-				System.out.println("Min: " + minNode.nodeFormat());
+//				System.out.println("Min: " + minNode.nodeFormat());
 				
 				minNode.setParent(null);
 				minNode.setRight(root.getRight());

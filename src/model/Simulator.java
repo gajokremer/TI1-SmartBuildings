@@ -1,8 +1,5 @@
 package model;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class Simulator {
 
 	private MyArrayList<Building> buildings;
@@ -24,14 +21,14 @@ public class Simulator {
 		
 		Building b = new Building(id);
 		
-		MyHashMap<Integer, Queue<Person>> floors = new MyHashMap<>();
+		MyHashMap<Integer, MyQueue<Person>> floors = new MyHashMap<>();
 		MyHashMap<Integer, Person> offices = new MyHashMap<>();
 		
 		int totalOffices = numFloors * numOfficesByFloor;
 
 		for(int i = 1; i <= numFloors; i++) {
 			
-			Queue<Person> q = new LinkedList<>();
+			MyQueue<Person> q = new MyQueue<Person>();
 			
 			floors.put(i, q);
 		}
@@ -79,7 +76,7 @@ public class Simulator {
 		
 		int entranceSize = b.getElevator().getEntrance().size();
 		
-		System.out.println("Entrance size: " + entranceSize);
+//		System.out.println("Entrance size: " + entranceSize);
 		
 		for(int i = 0; i < entranceSize; i++) {
 			
@@ -87,7 +84,7 @@ public class Simulator {
 		}
 		
 //		exit.addAll(b.getElevator().getEntrance());
-		System.out.println("Exit: " + exit);	
+//		System.out.println("Exit: " + exit);	
 		b.getElevator().setExit(exit);
 		
 		return b;
@@ -105,9 +102,9 @@ public class Simulator {
 			Person p = exit.pop();
 			b.getElevator().setExit(exit);
 			
-			System.out.println("Offices bulding: " + b.getId() + ": " + b.getOffices());
-			System.out.println("P: " + p);
-			System.out.println("Destination: " + p.getDestination());
+//			System.out.println("Offices bulding: " + b.getId() + ": " + b.getOffices());
+//			System.out.println("P: " + p);
+//			System.out.println("Destination: " + p.getDestination());
 			
 			if(b.getOffices().containsKey(p.getDestination())) {
 				

@@ -1,16 +1,13 @@
 package model;
 
-import java.util.Queue;
-
 public class Building {
 
 	private char id;
 	private Elevator elevator;
-	private MyHashMap<Integer, Queue<Person>> floors;
+	private MyHashMap<Integer, MyQueue<Person>> floors;
 	private MyHashMap<Integer, Person> offices;
 	
 	public Building(char id) {
-		
 		this.id = id;
 		elevator = new Elevator();
 		floors = new MyHashMap<>();
@@ -24,7 +21,7 @@ public class Building {
 		return elevator;
 	}
 
-	public MyHashMap<Integer, Queue<Person>> getFloors() {
+	public MyHashMap<Integer, MyQueue<Person>> getFloors() {
 		return floors;
 	}
 
@@ -40,7 +37,7 @@ public class Building {
 		this.elevator = elevator;
 	}
 
-	public void setFloors(MyHashMap<Integer, Queue<Person>> floors) {
+	public void setFloors(MyHashMap<Integer, MyQueue<Person>> floors) {
 		this.floors = floors;
 	}
 
