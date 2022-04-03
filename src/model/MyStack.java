@@ -17,31 +17,31 @@ public class MyStack<S> {
 	}
 
 	public SNode<S> peek() {
-		
+
 		if(head != null) return head;
-		
+
 		else return null;
 	}
-	
+
 	public S pop() {
-		
+
 		if(head != null) {
-			
+
 			SNode<S> aux = head;
 			head = head.getNext();
-			
+
 			return aux.getS();
 		}
 
 		return null;
 	}
-	
+
 	public void push(S s) {
-		
+
 		if(head == null) {
-			
+
 			head = new SNode<S>(s);
-			
+
 		} else {
 
 			SNode<S> aux = head;
@@ -87,12 +87,12 @@ public class MyStack<S> {
 
 		return 0;
 	}
-	
+
 	@Override
 	public String toString() {
-		
+
 		String line = "[";
-		
+
 		if(head != null) {
 
 			line += head.toString();
@@ -100,21 +100,64 @@ public class MyStack<S> {
 			boolean canContinue = true;
 
 			while(canContinue) {
-				
+
 				if(current != null) {
-					
+
 					line += ", " + current;
 					current = current.getNext();
-					
+
 				} else {
-					
+
 					canContinue = false;
 				}
 			}
 		}
-		
+
 		line += "]";
-		
+
 		return line;
+	}
+
+
+	public class SNode<S> {
+
+		private S s;
+		private SNode<S> next;
+		private SNode<S> prev;
+
+		public SNode(S s) {
+			this.s = s;
+			next = null;
+			prev = null;
+		}
+
+		public S getS() {
+			return s;
+		}
+
+		public SNode<S> getNext() {
+			return next;
+		}
+
+		public SNode<S> getPrev() {
+			return prev;
+		}
+
+		public void setS(S s) {
+			this.s = s;
+		}
+
+		public void setNext(SNode<S> next) {
+			this.next = next;
+		}
+
+		public void setPrev(SNode<S> prev) {
+			this.prev = prev;
+		}
+
+		@Override
+		public String toString() {
+			return s.toString();
+		}
 	}
 }

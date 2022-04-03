@@ -87,7 +87,7 @@ public class Menu {
 			System.out.println("Done...");
 		}
 		
-		System.out.println("\nBUILDINGS: " + simulator.getBuildings());
+//		System.out.println("\nBUILDINGS: " + simulator.getBuildings());
 	}
 
 	private void buildingData(int i) {
