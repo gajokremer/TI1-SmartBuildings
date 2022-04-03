@@ -28,7 +28,7 @@ public class Simulator {
 
 		for(int i = 1; i <= numFloors; i++) {
 			
-			MyQueue<Person> q = new MyQueue<Person>();
+			MyQueue<Person> q = new MyQueue<>();
 			
 			floors.put(i, q);
 		}
@@ -102,7 +102,7 @@ public class Simulator {
 			Person p = exit.pop();
 			b.getElevator().setExit(exit);
 			
-//			System.out.println("Offices bulding: " + b.getId() + ": " + b.getOffices());
+//			System.out.println("Offices building: " + b.getId() + ": " + b.getOffices());
 //			System.out.println("P: " + p);
 //			System.out.println("Destination: " + p.getDestination());
 			
@@ -122,7 +122,7 @@ public class Simulator {
 				
 			} else {
 				
-				line += "\n-" + p.getName() + " cannot enter a non-existant office";
+				line += "\n-" + p.getName() + " cannot enter a non-existent office";
 			}
 				
 		}

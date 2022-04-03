@@ -48,7 +48,7 @@ public class Person implements Comparable<Person> {
 			
 			return -1;
 			
-		} else if(p.getLocation() > location) {
+		} else if(location > p.getLocation()) {
 			
 			return 1;
 		}

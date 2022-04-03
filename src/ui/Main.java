@@ -2,7 +2,7 @@ package ui;
 
 public class Main {
 	
-	private Menu menu;
+	private final Menu menu;
 	
 	public Main() {
 		

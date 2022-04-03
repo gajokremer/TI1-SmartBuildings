@@ -18,7 +18,7 @@ public class MyQueue<Q> {
 
 	public void add(Q q) {
 
-		QNode<Q> tail = new QNode<Q>(q);
+		QNode<Q> tail = new QNode<>(q);
 		
 		if(head == null) {
 			
@@ -94,4 +94,3 @@ public class MyQueue<Q> {
 		}
 	}
 }
-

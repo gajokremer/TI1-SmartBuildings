@@ -12,7 +12,7 @@ public class MyArrayList<T> {
 
 		if(first == null) {
 
-			first = new ALNode<T>(t);
+			first = new ALNode<>(t);
 
 			//			return true;
 
@@ -35,7 +35,7 @@ public class MyArrayList<T> {
 
 		if(current.getNext() == null) {
 
-			ALNode<T> node = new ALNode<T>(t);
+			ALNode<T> node = new ALNode<>(t);
 			//			System.out.println("1 Current next: " + current.getNext());
 			current.setNext(node);
 			//			System.out.println("2 Current next: " + current.getNext());
@@ -72,31 +72,22 @@ public class MyArrayList<T> {
 
 			} else {
 
-				removeNode(first.getNext(), first);
+				removeNode(first.getNext());
 			}
-
-		} else {
-
-
 		}
 	}
 
-	private void removeNode(ALNode<T> current, ALNode<T> aux) {
+	private void removeNode(ALNode<T> current) {
 
 		if(current.getNext() != null) {
 
-			aux = null;
-			removeNode(current.getNext(), current);
+			removeNode(current.getNext());
 		}
 	}
 
 	public int size() {
 
-		if(first.equals(null)) {
-
-			return 0;
-
-		} else if(first != null && first.getNext() == null) {
+		if(first != null && first.getNext() == null) {
 
 			return 1;
 
@@ -104,8 +95,12 @@ public class MyArrayList<T> {
 
 			int i = 2;
 
-			return count(first.getNext(), i);
+			if (first != null) {
+
+				return count(first.getNext(), i);
+			}
 		}
+		return 0;
 	}
 
 	private int count(ALNode<T> current, int i) {
@@ -129,7 +124,7 @@ public class MyArrayList<T> {
 
 	public T get(int pos) {
 
-		if(!first.equals(null)) {
+		if(first != null) {
 
 			if(pos == 0) {
 
@@ -146,7 +141,7 @@ public class MyArrayList<T> {
 
 	private T getElement(ALNode<T> current, int pos, int i) {
 
-		if(!current.equals(null)) {
+		if(current != null) {
 
 			if(pos == i) {
 

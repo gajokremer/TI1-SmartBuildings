@@ -40,12 +40,13 @@ public class MyStack<S> {
 
 		if(head == null) {
 
-			head = new SNode<S>(s);
+			head = new SNode<>(s);
 
 		} else {
 
 			SNode<S> aux = head;
-			SNode<S> newNode = new SNode<S>(s);
+			SNode<S> newNode;
+			newNode = new SNode<>(s);
 			head = newNode;
 			head.setNext(aux);
 			aux.setPrev(head);
@@ -58,7 +59,7 @@ public class MyStack<S> {
 
 			return 0;
 
-		} else if(head != null && head.getNext() == null) {
+		} else if(head.getNext() == null) {
 
 			return 1;
 
@@ -119,7 +120,7 @@ public class MyStack<S> {
 	}
 
 
-	public class SNode<S> {
+	public static class SNode<S> {
 
 		private S s;
 		private SNode<S> next;

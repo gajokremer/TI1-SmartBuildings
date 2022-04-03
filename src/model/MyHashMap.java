@@ -19,7 +19,7 @@ public class MyHashMap<K, V> {
 
 	public void put(K key, V value) {
 
-		HMNode<K, V> newNode = new HMNode<K, V>(key, value);
+		HMNode<K, V> newNode = new HMNode<>(key, value);
 
 		//		System.out.println("\nNew Node: " + newNode);
 
@@ -46,7 +46,7 @@ public class MyHashMap<K, V> {
 			//			System.out.println("next = null");
 
 			current.setNext(newNode);
-			current.getNext().setPrev(current);;
+			current.getNext().setPrev(current);
 
 			//			System.out.println(newNode + " -> " + newNode.nextAndPrev());
 			//			System.out.println(current + " -> " + current.nextAndPrev());
@@ -70,15 +70,20 @@ public class MyHashMap<K, V> {
 	}
 
 	private V findValueByKey(K key, HMNode<K, V> current) {
-
-		if(current.getKey().equals( key)) {
-
-			return current.getValue();
-
-		} else {
-
-			return findValueByKey(key, current.getNext());
+		
+		if(current != null) {
+			
+			if(current.getKey() == key) {
+				
+				return current.getValue();
+				
+			} else {
+				
+				return findValueByKey(key, current.getNext());
+			}
 		}
+		
+		return null;
 	}
 
 	public boolean containsKey(K key) {
@@ -127,7 +132,7 @@ public class MyHashMap<K, V> {
 
 	private boolean findIfValueExists(V value, HMNode<K, V> current) {
 
-		if(!current.equals(null)) {
+		if(current != null) {
 
 			if(current.getValue().equals( value)) {
 
@@ -168,15 +173,12 @@ public class MyHashMap<K, V> {
 
 	public int size() {
 
-		int count = 0;
-		count = count(first, 0);
-
-		return count;
+		return count(first, 0);
 	}
 
 	private int count(HMNode<K, V> current, int count) {
 
-		if(!current.equals(null)) {
+		if(current != null) {
 
 			return count(current.getNext(), count+1);
 		} 

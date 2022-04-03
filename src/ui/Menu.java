@@ -8,8 +8,8 @@ import model.Person;
 
 public class Menu {
 
-	private Simulator simulator;
-	private Scanner sc;
+	private final Simulator simulator;
+	private final Scanner sc;
 
 	public Menu() {
 
@@ -23,54 +23,50 @@ public class Menu {
 		
 //		inputData();
 		
-		int option = 0;
-		
 		System.out.println("\n\n========MAIN MENU========\n");
 
 		System.out.println(
 				"Select an option:\n" + 
 						"(1) to input data\n" +
 //						"(2) to run simulation\n" +
-						"(3) to find a person\n" + 
+						"(2) to find a person\n" + 
 
 				"\n(0) to exit");
 
-		option = sc.nextInt();
+		int option = sc.nextInt();
 		sc.nextLine();
 //
-		if(option != 0) {
+		switch(option) {
 
-			switch(option) {
+		default:
 
-			default:
-
-				System.out.println("\n---Invalid Option");
-				mainMenu();
-				break;
-
-			case 1:
-//				simulator.getBuildings().removeAll(simulator.getBuildings());
-				simulator.getBuildings().removeAll();
-				inputData();
-				run();
-				mainMenu();
-				break;
-				
-//			case 2:
-//				run();
-//				mainMenu();
-//				break;
-				
-			case 3:
-				System.out.println("Person: " + finder());
-				mainMenu();
-				break;
-			} 
-
-		} else if (option == 0) {
-
+			System.out.println("\n---Invalid Option");
+			mainMenu();
+			break;
+			
+		case 0:
 			System.out.println("\n-----OPERATION ENDED-----\n");
-		}
+			break;
+
+		case 1:
+			//				simulator.getBuildings().removeAll(simulator.getBuildings());
+			simulator.getBuildings().removeAll();
+			inputData();
+			run();
+			mainMenu();
+			break;
+
+			//			case 2:
+			//				run();
+			//				mainMenu();
+			//				break;
+
+		case 2:
+			System.out.println("Person: " + finder());
+			mainMenu();
+			break;
+		} 
+
 	}
 
 	private void inputData() {
@@ -207,7 +203,8 @@ public class Menu {
 			
 			if(b.getId() == id) {
 				
-				p = b.getFloors().get(key).element();
+//				p = b.getFloors().get(key).element();
+				p = b.getOffices().get(key);
 			}
 		}
 		
