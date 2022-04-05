@@ -72,17 +72,22 @@ public class MyArrayList<T> {
 
 			} else {
 
-				removeNode(first.getNext());
+				first = removeNode(first);
 			}
 		}
 	}
 
-	private void removeNode(ALNode<T> current) {
+	private ALNode<T> removeNode(ALNode<T> current) {
 
 		if(current.getNext() != null) {
 
-			removeNode(current.getNext());
+			ALNode<T> next = current.getNext();
+			current = null;
+
+			return removeNode(next);
 		}
+
+		return null;
 	}
 
 	public int size() {
@@ -100,6 +105,7 @@ public class MyArrayList<T> {
 				return count(first.getNext(), i);
 			}
 		}
+
 		return 0;
 	}
 
