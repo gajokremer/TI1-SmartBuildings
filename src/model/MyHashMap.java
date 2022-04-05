@@ -21,7 +21,7 @@ public class MyHashMap<K, V> {
 
 		HMNode<K, V> newNode = new HMNode<>(key, value);
 
-		//		System.out.println("\nNew Node: " + newNode);
+//		System.out.println(containsKey(key) + ", " + containsValue(value));
 
 		if(first == null) {
 
@@ -33,8 +33,15 @@ public class MyHashMap<K, V> {
 
 			//			System.out.println("else");
 
-			assignPosition(newNode, first);
+			if(!containsKey(key) && !containsValue(value)) {
+
+				assignPosition(newNode, first);
+
+			}
+
 		}
+		//		System.out.println("\nNew Node: " + newNode);
+
 	}
 
 	private void assignPosition(HMNode<K, V> newNode, HMNode<K, V> current) {
@@ -59,7 +66,7 @@ public class MyHashMap<K, V> {
 
 	public V get(K key) {
 
-		if(first.getKey().equals(key)) {
+		if(first.getKey() == key) {
 
 			return first.getValue();
 
@@ -88,14 +95,19 @@ public class MyHashMap<K, V> {
 
 	public boolean containsKey(K key) {
 
-		if(first.getKey().equals(key)) {
+		if (first != null) {
 
-			return true;
+			if(first.getKey().equals(key)) {
 
-		} else {
+				return true;
 
-			return findIfKeyExists(key, first.getNext());
+			} else {
+
+				return findIfKeyExists(key, first.getNext());
+			}
 		}
+
+		return false;
 	}
 
 	private boolean findIfKeyExists(K key, HMNode<K, V> current) {
@@ -120,14 +132,20 @@ public class MyHashMap<K, V> {
 		//		System.out.println("First: " + first.getValue());
 		//		System.out.println("Value: " + value);
 
-		if(first.getValue().equals( value)) {
+		if (first != null) {
 
-			return true;
+			if(first.getValue() == value) {
 
-		} else {
+				return true;
 
-			return findIfValueExists(value, first.getNext());
+			} else {
+
+				return findIfValueExists(value, first.getNext());
+			}
+
 		}
+
+		return false;
 	}
 
 	private boolean findIfValueExists(V value, HMNode<K, V> current) {
@@ -149,13 +167,16 @@ public class MyHashMap<K, V> {
 
 	public void replace(K key, V value) {
 
-		if(first.getKey().equals(key)) {
+		if(containsKey(key)) {
 
-			first.setValue(value);
+			if(first.getKey().equals(key)) {
 
-		} else {
+				first.setValue(value);
 
-			findKeyOfValue(key, value, first.getNext());
+			} else {
+
+				findKeyOfValue(key, value, first.getNext());
+			}
 		}
 	}
 
